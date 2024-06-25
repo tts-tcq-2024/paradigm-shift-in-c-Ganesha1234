@@ -26,7 +26,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
   } 
   else
   {
-   return(ChechForOtherCondition(soc,chargeRate);
+   return(ChechForOtherCondition(soc,chargeRate));
   }
 }
 
