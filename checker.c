@@ -35,7 +35,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
     int tempIsOk = TemperaureIsOk(temperature);
     int stcIsOk = socIsOk(soc);
     int crIsOk = chargeRateIsOk(chargeRate);
-   bool result = tempIsOk&stcIsOk&crIsOk
+    int result = tempIsOk&stcIsOk&crIsOk;
     return result;
 }
 int main() 
