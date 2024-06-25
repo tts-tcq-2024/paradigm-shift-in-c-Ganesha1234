@@ -29,12 +29,22 @@ int chargeRateIsOk(float chargeRate)
     }
     return 1;
 }
+
+
+int CheckForSocAndChargeRate(float soc, float chargeRate)
+{
+
+    int stcIsOk = socIsOk(soc);
+    int crIsOk = chargeRateIsOk(chargeRate);
+    return (stcIsOk & crIsOk);
+
+}
+
 int batteryIsOk(float temperature, float soc, float chargeRate) 
 {
     int tempIsOk = TemperaureIsOk(temperature);
-    int stcIsOk = socIsOk(soc);
-    int crIsOk = chargeRateIsOk(chargeRate);
-    return (tempIsOk&stcIsOk&crIsOk);
+    int SocAndChargeRate=   CheckForSocAndChargeRate( soc,  chargeRate);
+    return (tempIsOk & SocAndChargeRate);
 }
  
 int main() 
