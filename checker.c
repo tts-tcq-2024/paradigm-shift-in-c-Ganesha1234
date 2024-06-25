@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <assert.h>
- 
 int TemperaureIsOk(float temperature)
 {
      if (temperature < 0 || temperature > 45) 
@@ -19,7 +18,6 @@ int socIsOk(float soc)
     }
     return 1;
 }
- 
 int chargeRateIsOk(float chargeRate)
 {
     if (chargeRate > 0.8) 
@@ -29,24 +27,17 @@ int chargeRateIsOk(float chargeRate)
     }
     return 1;
 }
-
-
-int CheckForSocAndChargeRate(float soc, float chargeRate)
-{
-
-    int stcIsOk = socIsOk(soc);
-    int crIsOk = chargeRateIsOk(chargeRate);
-    return (stcIsOk & crIsOk);
-
-}
-
+ 
+ 
+ 
 int batteryIsOk(float temperature, float soc, float chargeRate) 
 {
     int tempIsOk = TemperaureIsOk(temperature);
-    int SocAndChargeRate=   CheckForSocAndChargeRate( soc,  chargeRate);
-    return (tempIsOk & SocAndChargeRate);
+    int stcIsOk = socIsOk(soc);
+    int crIsOk = chargeRateIsOk(chargeRate);
+   bool result = tempIsOk&stcIsOk&crIsOk
+    return result;
 }
- 
 int main() 
 {
   assert(batteryIsOk(25, 70, 0.7));
