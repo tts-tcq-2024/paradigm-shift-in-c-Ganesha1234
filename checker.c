@@ -24,14 +24,21 @@ int isChargeRateOk(float chargeRate) {
   }
   return 1;
 }
-int CheckSocAndChargeRate(float soc, float chargeRate)
-{
- return (isSocOk(soc) && isChargeRateOk(chargeRate));
-}
-int batteryIsOk(float temperature, float soc, float chargeRate) {
-  return isTemperatureOk(temperature) && CheckSocAndChargeRate( soc,  chargeRate) ;
-}
+
+
+
+int batteryIsOk(float temperature, float soc, float chargeRate) { 
  
+ int temperatureOk = isTemperatureOk(temperature);   
+ int socOk = isSocOk(soc);   
+ int chargeRateOk = isChargeRateOk(chargeRate); 
+ return (temperatureOk && socOk && chargeRateOk);
+
+}
+
+
+
+
 int main() {
   assert(batteryIsOk(25, 70, 0.7));
   assert(!batteryIsOk(50, 85, 0));
