@@ -86,7 +86,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
     //int crIsOk = chargeRateIsOk(chargeRate);
     //int result = tempIsOk&stcIsOk&crIsOk;
     //return result;
-     result 0;
+     return 0;
 }
 int main() 
 {
