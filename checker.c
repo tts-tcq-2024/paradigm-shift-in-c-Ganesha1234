@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <assert.h>
+#include <assert.h>  
 int TemperaureIsOk(float temperature)
 {
      if (temperature < 0 || temperature > 45) 
