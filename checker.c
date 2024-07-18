@@ -80,7 +80,7 @@ int chargeRateIsOk(float chargeRate)
  
 int batteryIsOk(float temperature, float soc, float chargeRate) 
 {
-    int 
+    
     int tempIsOk = TemperaureIsOk(temperature);
     int stcIsOk = socIsOk(soc);
     int crIsOk = chargeRateIsOk(chargeRate);
