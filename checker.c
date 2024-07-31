@@ -41,6 +41,17 @@ float calculateTolerance(float upperLimit) {
     return upperLimit * TOLERANCE_PERCENTAGE;
 }
 
+
+void check_Lowhighlimit(const char* messages[], float Value, float Lowerlimtc, float Upperlimt) {
+    if (Value <= Lowerlimtc) {
+        printMessage(messages[1]);
+    }
+    if (Value >= Upperlimt) {
+        printMessage(messages[2]);
+    }
+}
+
+
 int checkTemperature(float temperature) {
     float lowerWarningLimit = TEMP_MIN + calculateTolerance(TEMP_MAX);
     float upperWarningLimit = TEMP_MAX - calculateTolerance(TEMP_MAX);
@@ -49,12 +60,7 @@ int checkTemperature(float temperature) {
         printMessage(TemperatureMessages[currentLanguage][0]);
         return 0;
     }
-    if (temperature <= lowerWarningLimit) {
-        printMessage(TemperatureMessages[currentLanguage][1]);
-    }
-    if (temperature >= upperWarningLimit) {
-        printMessage(TemperatureMessages[currentLanguage][2]);
-    }
+    check_Lowhighlimit(TemperatureMessages[currentLanguage], temperature, lowerWarningLimit, upperWarningLimit);
     return 1;
 }
 
@@ -66,12 +72,7 @@ int checkSoC(float soc) {
         printMessage(SoCMessages[currentLanguage][0]);
         return 0;
     }
-    if (soc <= lowerWarningLimit) {
-        printMessage(SoCMessages[currentLanguage][1]);
-    }
-    if (soc >= upperWarningLimit) {
-        printMessage(SoCMessages[currentLanguage][2]);
-    }
+    check_Lowhighlimit(SoCMessages[currentLanguage], soc, lowerWarningLimit, upperWarningLimit);
     return 1;
 }
 
